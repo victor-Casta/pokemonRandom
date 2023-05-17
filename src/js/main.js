@@ -4,6 +4,9 @@ const imageBaseURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/s
 const btnRandom = document.getElementById("btn-random");
 const pokemonImg = document.getElementById("pokemon-img");
 const pokemonName = document.getElementById("pokemon-name");
+const abilities = document.getElementById("abilities");
+const species = document.getElementById("species");
+const moves =document.getElementById("moves");
 
 btnRandom.addEventListener("click", getPokemon);
 
@@ -13,9 +16,14 @@ async function getPokemon() {
     
         const response = await fetch(`${baseURL}${randomID}`);
         const pokemon = await response.json();
+        console.log(pokemon);
     
         pokemonImg.src = `${imageBaseURL}${pokemon.id}.png`;
         pokemonName.textContent = pokemon.name;
+        abilities.textContent = pokemon.abilities[0].ability.name;
+        species.textContent = pokemon.species.name;
+        moves.textContent = pokemon.moves[0].move.name;
+
     
         return pokemon;
     } catch (error) {
