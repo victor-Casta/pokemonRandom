@@ -27,7 +27,7 @@ async function getPokemon() {
         const response = await fetch(`${baseURL_RANDOM}${randomID}`);
         const pokemon = await response.json();
 
-        pokemonImg.src = `${imageBaseURL}${pokemon.id}.png`;
+        pokemonImg.src = pokemon.sprites.other["official-artwork"].front_default;
         pokemonName.textContent = pokemon.name;
         abilities.textContent = pokemon.abilities[0].ability.name;
         species.textContent = pokemon.species.name;
@@ -40,6 +40,8 @@ async function getPokemon() {
         console.log(error);
     }
 }
+
+getPokemon();
 
 function addToFavorites() {
     const pokemon = pokemonArray[pokemonArray.length - 1];
@@ -55,16 +57,14 @@ function addToFavorites() {
     favoriteName.textContent = pokemon.name;
 
     const btnRemoveFavorites = document.createElement("button");
-    const btnText = document.createTextNode("remove to favorites");
-    
+    const btnText = document.createTextNode("Remove from favorites");
 
-    notification.textContent = `pokémon ${pokemon.name} added to favorites`;
+    notification.textContent = `Pokémon ${pokemon.name} added to favorites`;
     notification.style.display = "block";
 
     setTimeout(() => {
         notification.style.display = "none";
     }, 3000);
-
 
     favoriteCard.appendChild(favoriteImg);
     favoriteCard.appendChild(favoriteName);
@@ -72,6 +72,20 @@ function addToFavorites() {
     favoriteCard.appendChild(btnRemoveFavorites);
 
     favoritesContainer.appendChild(favoriteCard);
+
+    btnRemoveFavorites.addEventListener("click", function() {
+        const parentDiv = this.parentNode;
+        const pokemonName = parentDiv.querySelector("h3").textContent;
+
+        // Eliminar el elemento del DOM
+        parentDiv.remove();
+
+        // Eliminar el elemento del array
+        const index = pokemonArray.findIndex(pokemon => pokemon.name === pokemonName);
+        if (index !== -1) {
+            pokemonArray.splice(index, 1);
+        }
+    });
 }
 
 function openCardsFavorites() {
@@ -82,4 +96,3 @@ function closeFavoritesContainer() {
     favoritesContainer.classList.add("view-card");
 }
 
-getPokemon();
