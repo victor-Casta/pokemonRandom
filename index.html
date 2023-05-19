@@ -7,54 +7,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./src/css/style.css">
+    <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>
+    <script defer src="./src/js/storage.js"></script>
     <script defer src="./src/js/main.js"></script>
+
 </head>
 
 <body>
     <main>
-        <aside class="card__favorites-container">
-            <span class="close-favorites" id="close-favorites">X</span>
-            <div class="open-close-aside" id="open-aside">
-                <div class="view-card" id="favorites-container">
-                    <h3 class="favorites-title">Favorites Zone</h3>
-                </div>
-            </div>
-        </aside>
-        <article class="card-container">
-            <div class="card">
-                <div class="card__header">
-                    <img src="./src/img/fondo.jpg" alt="fondo">
-                    <div class="card__pokemon-img-container">
-                        <img id="pokemon-img" src="" alt="Pokemon image">
-                        
+        <section class="section1">
+            <div class="open-close-aside" id="open-aside"></div>
+            <aside class="card__favorites-container">
+                <span class="close-favorites" id="close-favorites">X</span>
+                    <div class="view-card" id="favorites-container">
+                        <h3 class="favorites-title">Favorites Zone</h3>
                     </div>
-                    <h2 id="pokemon-name"></h2>
-                    <div class="card__container-infortation">
-                        <div class="card__pokemon-info-container">
-                            <h3>Abitilies</h3>
-                            <span class="card__info" id="abilities"></span>
-                        </div>
-                        <div class="card__pokemon-info-container">
-                            <h3>Species</h3>
-                            <span class="card__info" id="species"></span>
-                        </div>
-                        <div class="card__pokemon-info-container">
-                            <h3>Moves</h3>
-                            <span class="card__info" id="moves"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </article>
+            </aside>
 
-        <section class="buton-container">
-            <button class="button_new-img" , id="btn-random" role="button">New Pokémon</button>
-            <button class="button_new-img" , id="btn-add" role="button">Add favorites</button>
+            <article class="card-container">
+                <div class="card">
+                    <div class="card__header">
+                        <img src="./src/img/fondo.jpg" alt="fondo">
+                        <div class="card__pokemon-img-container">
+                            <img id="pokemon-img" src="" alt="Pokemon image">
+
+                        </div>
+                        <h2 id="pokemon-name"></h2>
+                        <div class="card__container-infortation">
+                            <div class="card__pokemon-info-container">
+                                <h3>Abitilies</h3>
+                                <span class="card__info" id="abilities"></span>
+                            </div>
+                            <div class="card__pokemon-info-container">
+                                <h3>Species</h3>
+                                <span class="card__info" id="species"></span>
+                            </div>
+                            <div class="card__pokemon-info-container">
+                                <h3>Moves</h3>
+                                <span class="card__info" id="moves"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <div class="buton-container">
+                <button class="button_new-img" , id="btn-random" role="button">New Pokémon</button>
+                <button class="button_new-img" , id="btn-add" role="button">Add favorites</button>
+            </div>
+
         </section>
-        
-        <div class="notification" id="notification"></div>
 
+
+        <section class="section2">
+            <div class="uploadPokemon">
+                <h2>upload photo of your pokemon</h2>
+                <form method="post" id="uploadingForm">
+                    <input type="file" id="file" name="file">
+                    <button type="button" class="button-86" role="button" onclick="uploadPokemonPhoto()">Send Photo</button>
+                </form>
+                <div class="UploadImagesContainer">
+                    <img id="imgNN" alt="">
+                </div>
+            </div>
+        </section>
+
+
+        <div class="notification" id="notification"></div>
     </main>
 </body>
+
+</html>
 
 </html>
