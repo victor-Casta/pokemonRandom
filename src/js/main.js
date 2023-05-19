@@ -95,4 +95,3 @@ function openCardsFavorites() {
 function closeFavoritesContainer() {
     favoritesContainer.classList.add("view-card");
 }
-
