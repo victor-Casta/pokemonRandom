@@ -1,4 +1,4 @@
-# PokemonRamdom
+# PokemonRamdom 💥🔥
 
 https://victor-casta.github.io/pokemonRandom/ <br>
 
